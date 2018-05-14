@@ -4,7 +4,7 @@
  */
 package controller;
 
-import dao.BD;
+import dao.DataBaseLocator;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -53,7 +53,7 @@ public class RelatorioProfessorController extends HttpServlet {
         Connection conexao = null;
 
         try {
-            conexao = BD.getConexao();
+            conexao = DataBaseLocator.getConexao();
             HashMap parametros = new HashMap();
             parametros.put("PAR_titulacao", request.getParameter("titulacao"));
             String relatorio = getServletContext().getRealPath("/WEB-INF/classes/report")+"/professoresTitulacao.jasper";

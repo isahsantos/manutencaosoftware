@@ -10,7 +10,7 @@ import util.HibernateUtil;
 
 public class AvaliacaoDao {
 
-    public static void gravarAvaliacao(Avaliacao avaliacao) throws SQLException, ClassNotFoundException {
+       public static void gravarAvaliacao(Avaliacao avaliacao) throws SQLException, ClassNotFoundException {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction = session.beginTransaction();
         session.save(avaliacao);

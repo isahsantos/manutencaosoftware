@@ -4,12 +4,14 @@
  */
 package controller;
 
-import dao.BD;
+import dao.DataBaseLocator;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -63,7 +65,13 @@ public class ReatorioHistoricoAlunoController extends HttpServlet {
         Connection conexao = null;
 
         try {
-            conexao = BD.getConexao();
+            try {
+                conexao = DataBaseLocator.getConexao();
+            } catch (SQLException ex) {
+                Logger.getLogger(ReatorioHistoricoAlunoController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ReatorioHistoricoAlunoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
             HashMap parametros = new HashMap();
             parametros.put("PAR_matricula", Integer.parseInt(request.getParameter("txtMatricula")));
             String relatorio = getServletContext().getRealPath("/WEB-INF/classes/report")+"/historicoAluno.jasper";
@@ -72,10 +80,6 @@ public class ReatorioHistoricoAlunoController extends HttpServlet {
             response.setHeader("Content-Disposition", "attachment;filename=historicoAluno.pdf");
             response.setContentType("application/pdf");
             response.getOutputStream().write(relat);
-        } catch (SQLException ex) {
-            throw new ServletException(ex);
-        } catch (ClassNotFoundException ex) {
-            throw new ServletException(ex);
         } catch (JRException ex) {
             throw new ServletException(ex);
         } catch (IOException ex) {

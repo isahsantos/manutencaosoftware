@@ -16,7 +16,8 @@ import model.Professor;
 
 public class PesquisarProfessorPorCursoController extends HttpServlet {
 
-   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+ 
+      protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String acao = request.getParameter("acao");
         response.setContentType("text/html;charset=UTF-8");

@@ -3,6 +3,24 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
+    
+    
+    <style>
+        head{
+            background-color:blueviolet;
+            height:30px;
+            width: 100%;
+            
+        }
+        footer{
+              background-color:blueviolet;
+            height:20px;
+            width: 100%;
+            
+            
+        } 
+        
+    </style>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pesquisar Nota Frequência</title>
@@ -60,7 +78,7 @@
                                         <td>
                                             ${turma.ano} / ${turma.semestre}
                                         </td>
-                                        <td>
+                                         <td>
                                             <a href="ManterNotaFrequenciaController?codTurma=${turma.codTurma}&acao=prepararOperacao">Editar</a>
                                         </td>
                                     </tr>
@@ -76,6 +94,7 @@
                     </td>
                 </tr>
             </table>
-        </form>     
+        </form>  
+        <footer> Develop by: </foo
     </body>
 </html>

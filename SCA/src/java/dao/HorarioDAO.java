@@ -10,7 +10,7 @@ import util.HibernateUtil;
 
 public class HorarioDAO {
 
-    public static void gravarHorario(Horario horario) throws SQLException, ClassNotFoundException {
+ public static void gravarHorario(Horario horario) throws SQLException, ClassNotFoundException {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction = session.beginTransaction();
         session.save(horario);

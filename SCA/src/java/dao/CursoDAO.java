@@ -20,7 +20,7 @@ import util.HibernateUtil;
  * @author Heleno
  */
 public class CursoDAO {
-    public static void gravarCurso(Curso curso) throws SQLException, ClassNotFoundException{
+     public static void gravarCurso(Curso curso) throws SQLException, ClassNotFoundException{
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaction = session.beginTransaction();
         session.save(curso);

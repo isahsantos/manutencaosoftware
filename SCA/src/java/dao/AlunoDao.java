@@ -17,7 +17,7 @@ import org.hibernate.Transaction;
 import util.HibernateUtil;
 
 public class AlunoDao {
-    public static List<Aluno> obterAlunos() throws ClassNotFoundException, SQLException{
+      public static List<Aluno> obterAlunos() throws ClassNotFoundException, SQLException{
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         session.clear();

@@ -4,7 +4,7 @@
  */
 package controller;
 
-import dao.BD;
+import dao.DataBaseLocator;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -62,7 +62,7 @@ public class RelatorioAlunoAnoSemestreController extends HttpServlet {
     public void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException{
         Connection conexao = null;
         try {
-            conexao = BD.getConexao();
+            conexao = DataBaseLocator.getConexao();
             HashMap parametros = new HashMap();
             parametros.put("PAR_ano", Integer.parseInt(request.getParameter("txtAnoIngresso")));
             parametros.put("PAR_semestre", Integer.parseInt(request.getParameter("txtSemestreIngresso")));
