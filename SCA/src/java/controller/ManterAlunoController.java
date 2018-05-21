@@ -45,7 +45,7 @@ public class ManterAlunoController extends HttpServlet {
             String nomeAluno = request.getParameter("nome");
             Date dataNascimento = ConverteData.converte(request.getParameter("dataNascimento"));
             String logradouro = request.getParameter("logradouro");
-            int numero = 0;
+            int numero =0;
             if(!request.getParameter("numero").equals("")){
                 numero = Integer.parseInt(request.getParameter("numero"));
             }

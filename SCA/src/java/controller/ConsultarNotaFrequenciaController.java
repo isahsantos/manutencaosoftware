@@ -1,3 +1,7 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controller;
 
 import java.io.IOException;
@@ -11,6 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import model.Aluno;
 import model.Avaliacao;
 
+/**
+ *
+ * @author Lima
+ */
 public class ConsultarNotaFrequenciaController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -18,15 +26,15 @@ public class ConsultarNotaFrequenciaController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String acao = request.getParameter("acao");
         try {
-
+            
             int matricula = Integer.parseInt(request.getParameter("matricula"));
-            if (acao.equals("prepararOperacao")) {
+            if(acao.equals("prepararOperacao")){
                 List<Avaliacao> avaliacoes = Avaliacao.obterAvaliacoesPorAluno(matricula);
                 request.setAttribute("avaliacoes", avaliacoes);
             } else {
-                if (acao.equals("confirmarOperacao")) {
+                if(acao.equals("confirmarOperacao")){
                     String pesqisa = request.getParameter("pesquisa");
-                    if (pesqisa.equals("Todas")) {
+                    if(pesqisa.equals("Todas")){
                         List<Avaliacao> avaliacoes = Avaliacao.obterAvaliacoesPorAluno(matricula);
                         request.setAttribute("avaliacoes", avaliacoes);
                     } else {
@@ -37,11 +45,11 @@ public class ConsultarNotaFrequenciaController extends HttpServlet {
                     }
                 }
             }
-
-
+            
+            
             Aluno aluno = Aluno.obterAluno(matricula);
             request.setAttribute("aluno", aluno);
-
+            
             RequestDispatcher janela = request.getRequestDispatcher("/consultarNotaFrequencia.jsp");
             janela.forward(request, response);
         } catch (SQLException e) {

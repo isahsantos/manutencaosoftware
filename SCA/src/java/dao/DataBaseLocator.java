@@ -21,4 +21,5 @@ public class DataBaseLocator{
         conexao = DriverManager.getConnection("jdbc:mysql://localhost/manutencao", "root","");
         return conexao;
     }
+    
 }
